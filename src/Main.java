@@ -57,9 +57,6 @@ public class Main {
         }
     }
     public static void main(String args[]) throws IOException {
-
-
-        // Writing into the file
        String path = "C:/Users/Mike/Documents/TestFolder";
        fileScanner(path, 0);
     }
