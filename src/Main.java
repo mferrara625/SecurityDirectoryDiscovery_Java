@@ -56,8 +56,9 @@ public class Main {
             }
         }
     }
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws Exception {
        String path = "C:/Users/Mike/Documents/TestFolder";
        fileScanner(path, 0);
+       EmailSender.sendMessage();
     }
 }
