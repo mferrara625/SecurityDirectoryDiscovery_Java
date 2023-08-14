@@ -12,6 +12,13 @@ public class Main {
     public static void fileScanner(String pathname, int numberOfIndents) throws IOException {
         //Creating a File object for directory
         File directoryPath = new File(pathname);
+        File txtFile = new File(fileName.toUri());
+        boolean fileCreated = txtFile.createNewFile();
+        if(fileCreated){
+            System.out.println("New text file successfully created");
+        } else {
+            System.out.println("File already exists");
+        }
         //List of all files and directories
         File[] filesList = directoryPath.listFiles();
         System.out.println("List of files and directories in the specified directory:");
@@ -59,6 +66,9 @@ public class Main {
     public static void main(String args[]) throws Exception {
        String path = "C:/Users/Mike/Documents/TestFolder";
        fileScanner(path, 0);
-       EmailSender.sendMessage();
+       EmailSender.sendMessage("test@test.com", "password1");
+       File directoryPath = new File(Main.fileName.toUri());
+       directoryPath.deleteOnExit();
+
     }
 }

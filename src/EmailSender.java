@@ -14,7 +14,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 public class EmailSender {
-    public static void sendMessage() throws Exception {
+    public static void sendMessage(String email, String password) throws Exception {
         Properties props = new Properties();
         props.setProperty("mail.smtp.host", "smtp.mail.yahoo.com");
         props.put("mail.smtp.auth", "true");
@@ -25,13 +25,13 @@ public class EmailSender {
         Session sess = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("test@test.com","password1");
+                        return new PasswordAuthentication(email,password);
                     }
                 });
         try{
             MimeMessage msg = new MimeMessage(sess);
-            msg.setFrom(new InternetAddress("test@test.com"));
-            msg.addRecipient(Message.RecipientType.TO,new InternetAddress("test@test.com"));
+            msg.setFrom(new InternetAddress(email));
+            msg.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
             msg.setSubject("Welcome To My Domain");
             BodyPart mbody = new MimeBodyPart();
             mbody.setText("Your Message body is sent");
