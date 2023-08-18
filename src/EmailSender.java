@@ -14,7 +14,19 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 public class EmailSender {
-    public static void sendMessage(String email, String password) throws Exception {
+
+        private static String email;
+        private static String password;
+
+        public EmailSender(){
+        }
+
+        public EmailSender(String email, String password){
+            this.email = email;
+            this.password = password;
+        }
+
+    public static void sendMessage() throws Exception {
         Properties props = new Properties();
         props.setProperty("mail.smtp.host", "smtp.mail.yahoo.com");
         props.put("mail.smtp.auth", "true");
